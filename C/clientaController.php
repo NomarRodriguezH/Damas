@@ -1,7 +1,8 @@
 <?php 
-include '../M/mainModel.php';
+require_once '../../M/mainModel.php';
 
 class clientaController extends mainModel {
+
 
     public function completarPerfil() {
 
@@ -193,10 +194,10 @@ class clientaController extends mainModel {
 
                 $html .= '
                 <div class="card">
-                    <a href="ver-suggars.php?id=' . htmlspecialchars($usuario['id']) . '"><h2>' . htmlspecialchars($usuario['usuario_nombre']) . '</h2></a>
+                    <a href="ver-suggar.php?id=' . htmlspecialchars($usuario['id']) . '"><h2>' . htmlspecialchars($usuario['usuario_nombre']) . '</h2></a>
                     <p><strong>Email:</strong> ' . htmlspecialchars($usuario['usuario_usuario']) . '</p>
                     <p><strong>Edad:</strong> ' . htmlspecialchars($usuario['edad']) . '</p>
-                    <img src="../../fotos/' . htmlspecialchars($usuario['foto']) . '" width="120px" height="170px">
+                    <img src="../fotos/' . htmlspecialchars($usuario['foto']) . '" width="120px" height="170px">
                     <p>Ingresos mensuales: ' . htmlspecialchars($usuariox['ingresosMensuales']) . '</p>
                     <p>Busca: ' . htmlspecialchars($usuariox['rangoEdad']) . '</p>
                 </div>';
@@ -214,30 +215,66 @@ class clientaController extends mainModel {
     public function verInformacionSuggar($id){
         $informacion1 = $this->ejecutarConsulta("SELECT * FROM usuario WHERE id='$id' ");
         $informacion2 = $this->ejecutarConsulta("SELECT * FROM usuario_suggar WHERE idC='$id' ");
+        $informacion3 = $this->ejecutarConsulta("SELECT * FROM usuario_suggar_gustos WHERE idC='$id' ");
+        $informacion4 = $this->ejecutarConsulta("SELECT * FROM usuarios_suggar_contacto WHERE idS='$id' ");
 
         if ($informacion1->rowCount() >0 && $informacion2->rowCount()>0) {
             $informacion1x= $informacion1->fetch(PDO::FETCH_ASSOC);
             $informacion2x=$informacion2->fetch(PDO::FETCH_ASSOC);
+            $informacion3x=$informacion3->fetch(PDO::FETCH_ASSOC);
+            $informacion4x=$informacion4->fetch(PDO::FETCH_ASSOC);
 
+            if($informacion1x['status']==''){
+                $status ="Activo";
 
-            echo 
-            '<html>'
-                '<body>'
-                    '<div>'
-                   ' <p>'.$informacion1x['usuario_nombre'];.'</p>'
-                   ' </div>'
+            }else {
+                 $status ="cuenta con restricciones (CUIDADO)";
+            }
 
-                '</body>'
-           ' </html>'; 
-
+            if ($informacion1x['S']=='1') {
+                $s="Si esta registrado como suggar baby";
+                
+            }else{
+                $s="No esta registrado como suggar baby";
+            }
             
+            if ($informacion1x['SB']=='1') {
+                $sb="Si esta registrado como suggar baby";
+            }else {
+                $sb="No esta registrado como suggar baby";
+            }
+
+
+
+
+
+            echo "
+        <div class='box has-shadow' style='max-width: 400px; margin: auto;'>
+            <figure class='image is-128x128'>
+                <img src='../../fotos/".$informacion1x['foto']."' alt='Foto de perfil'>
+            </figure>
+            <div class='content'>
+                <h3 class='title is-4'>Perfil de Usuario</h3>
+                <p><strong>Nombre:</strong> ". $informacion1x['usuario_nombre']." ".$informacion1x['usuario_apellido']."</p>
+                <p><strong>Usuario:</strong> ".$informacion1x['usuario_usuario']."</p>
+                <p><strong>Se unió en:</strong> ".$informacion1x['creado']."</p>
+                <p><strong>Edad:</strong> ".$informacion1x['edad']." años</p>
+                <p><strong>Estatus de su cuenta:</strong> ".$status."</p>
+                <p><strong>Registrado como SD:</strong> ".$s."</p>
+                <p><strong>Registrado como SB:</strong> ".$sb."</p>
+                <p><strong>Ingresos mensuales:</strong> $".$informacion2x['ingresosMensuales']."</p>
+                <p><strong>Trabajo:</strong> ".$informacion2x['trabajo']."</p>
+                <p><strong>Zona:</strong> ".$informacion2x['zona']."</p>
+                <p><strong>Busca edades de:</strong> ".$informacion2x['rangoEdad']."</p>
+            </div>
+        </div>
+        ";
+
 
         }else {
-            echo "No existen datos de SG";
+            echo "No existen datos de SG o el SG aun no ha completado sus datos...";
         }
     }
-
-
 
 
 

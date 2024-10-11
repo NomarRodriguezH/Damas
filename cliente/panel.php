@@ -79,11 +79,11 @@ echo "ID: " . $_SESSION['id_cliente'];
     <div class="container full-height is-flex is-justify-content-center is-align-items-center">
         <div class="box">
             <h1 class="title is-4">Opciones Como Cliente</h1>
-            <a href="../V/explorar-damas.php">Explorar Damas Nocturnas</a>
-            <a href="../V/explorar-damas.php">Explorar Suggar Babys</a>
+            <a href="../principal/lista-de-escorts">Explorar Damas Nocturnas</a>
+            <a href="../principal/lista-suggar-babys">Explorar Suggar Babys</a>
             <a href="promocionarme.php">Promocionarme como Suggar Daddy</a>
 
-            <a href="baby-hombre.php">Promocionarme como Suggar baby macho</a>
+            <a href="baby-hombre.php">Promocionarme como Suggar baby hombre</a>
 
             <a href="historial.php">Ver mi historial de citas</a>
 

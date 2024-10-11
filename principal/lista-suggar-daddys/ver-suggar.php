@@ -1,5 +1,5 @@
 <?php 
-	require_once '../C/clientaController.php';
+    require_once '../../C/clientaController.php';
 	if (isset($_GET['id']) || is_numeric($_GET['id']) ) {
 		$id= $_GET['id'];
 	}else {
@@ -11,13 +11,14 @@
 <html>
 <head>
 	<title>Ver Suggar</title>
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
 </head>
 	<body>
-		<div><h1>Información Completa De SG</h1></div>
-
-
+		<center><h1>Información Completa De SG</h1></center>
 		<?php $clienta = new clientaController();
 		$res = $clienta->verInformacionSuggar($id);
 		echo $res;?>
+		<button></button>
 	</body>
 </html>

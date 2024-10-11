@@ -163,9 +163,26 @@
                     <label for="gustos">Tipo de cuerpo</label>
                     <input type="text" id="Tipo" name="Tipo">
                 </div>
+
+                 <div>
+                    <label for="gustos">Localidad</label>
+                    <input type="text" id="Localidad" name="Localidad">
+                </div>
+
+
+                <div>
+                    <label for="genero">¿Que buscas?</label>
+                    
+
+                    <label>
+                       <input type="radio" name="genero" value="sd" required> Suggar daddy
+                    </label>
+                     <input type="radio" name="genero" value="sm" required> Suggar Mommy
+                    </label>
+                </div>
                 
                 <div>
-                    <button type="submit">¿Buscas SD o SM?</button>
+                    <button type="submit">Enviar Registro</button>
                 </div>
             </form>
         </div>

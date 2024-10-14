@@ -1,9 +1,9 @@
 <?php
-    require_once '../C/clienteController.php';
+    require_once '../C/clientaController.php';
     session_start();
-    $cc = new clienteController();
+    $cc = new clientaController();
 
-    $id_usuario = $_SESSION['id_cliente'];
+    $id_usuario = $_SESSION['id'];
 
     $perfil = $cc->verPerfil($id_usuario);
 ?>
@@ -93,36 +93,53 @@
         <div class="box">
             <?php if ($perfil): ?>
                 <!-- Imagen de perfil -->
-                <img src="../fotos/<?php echo htmlspecialchars($perfil['foto']); ?>" alt="Foto de perfil" class="profile-image">
+                <img src="../fotos/clientas/<?php echo htmlspecialchars($perfil['foto']); ?>" alt="Foto de perfil" class="profile-image">
 
                 <!-- Información del perfil -->
                 <div class="profile-info">
-                    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($perfil['usuario_nombre']); ?></p>
-                    <p><strong>Apellido:</strong> <?php echo htmlspecialchars($perfil['usuario_apellido']); ?></p>
-                    <p><strong>Usuario:</strong> <?php echo htmlspecialchars($perfil['usuario_usuario']); ?></p>
-                    <p><strong>Email:</strong> <?php echo htmlspecialchars($perfil['usuario_email']); ?></p>
+                    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($perfil['nombre']); ?></p>
+                    <p><strong>Apellido:</strong> <?php echo htmlspecialchars($perfil['apellido']); ?></p>
+                    <p><strong>Usuario:</strong> <?php echo htmlspecialchars($perfil['username']); ?></p>
+                    <p><strong>Email:</strong> <?php echo htmlspecialchars($perfil['correo']); ?></p>
                     <p><strong>Fecha de creación:</strong> <?php echo htmlspecialchars($perfil['creado']); ?></p>
-                    <p><strong>Edad:</strong> <?php echo htmlspecialchars($perfil['edad']); ?></p>
 
                     <p>
                         <?php 
-                        if ($perfil['S'] != '1' && $perfil['S'] != '0') {
-                            echo "Cuenta sin restricciones";
-                        } else {
-                            echo "Cuenta bloqueada o con restricciones";
+                        if ($perfil['tipo'] == '1') {
+                            echo "Tipo de cuenta: Suggar Baby";
+                        } else if ($perfil['tipo'] == '2') {
+                            echo "Tipo de cuenta: Suggar Mommy";
+                        }else {
+                            echo "CUENTA SUSPENDIDA";
                         }
                         ?>
                     </p>
 
                     <p>
                         <?php 
-                        echo ($perfil['S'] == '1') ? "Registrado como Suggar Daddy: SI" : "Registrado como Suggar Daddy: NO";
+                        if ($perfil['status'] == '1') {
+                            echo "Cuenta sin verificar";
+                        } else if ($perfil['status'] == '2') {
+                            echo "Cuenta verificada";
+                        } else if ($perfil['status'] == '2') {
+                            echo "Cuenta con reportes";
+                        }else {
+                            echo "CUENTA SUSPENDIDA";
+                        }
                         ?>
                     </p>
 
                     <p>
                         <?php 
-                        echo ($perfil['SB'] == '1') ? "Registrado como Suggar Baby Hombre: SI" : "Registrado como Suggar Baby Hombre: NO";
+                        if ($perfil['clienta_datos'] == '1') {
+                            echo "Aun no has completado tus datos";
+                        } else if ($perfil['clienta_datos'] == '2') {
+                            echo "Datos enviados pero falta verificarlos";
+                        }else if ($perfil['clienta_datos'] == '3') {
+                            echo "Datos enviados y verificados";
+                        }else {
+                            echo "Cuenta en revisión.";
+                        }
                         ?>
                     </p>
                 </div>

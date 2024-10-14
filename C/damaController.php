@@ -2,8 +2,6 @@
 
 	class damaController extends mainModel {
 
-
-
 		public function subirMuchasImagenes (){
 
 

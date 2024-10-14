@@ -1,20 +1,20 @@
 <?php
-
+require_once 'C/UserController.php';
 	if(isset($_POST['tipoRegistro'])){
 	    $userController = new userController();
 
 	    if ($_POST['tipoRegistro']=="cliente") {
-	    	$respuesta = echo $userController->registrarUsuarioControlador();
+	    	$respuesta =  $userController->registrarUsuarioControlador();
 	    	$respuestaArray = json_decode($respuesta, true);
 	    }
 
 	    if ($_POST['tipoRegistro']=="dama") {
-	     $respuesta = echo $userController->registrarDamaControlador();
+	     $respuesta =  $userController->registrarDamaControlador();
 	     $respuestaArray = json_decode($respuesta, true);
 	    }
 
 	    if ($_POST['tipoRegistro']=="clienta") {
-    	  $respuesta = echo $userController->registrarClientaControlador();
+    	  $respuesta =  $userController->registrarClientaControlador();
     	  $respuestaArray = json_decode($respuesta, true);
     	}
 	}
@@ -49,7 +49,7 @@
         </div>
     <?php endif; ?>
     <div>
-    	<a href="completar-perfil.php">Volver</a>
+    	<a onclick="window.history.back()">Volver</a>
     </div>
 </body>
 </html>

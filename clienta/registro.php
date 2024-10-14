@@ -6,10 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro De Dama</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5; /* Fondo gris claro */
+        }
+        .box {
+            background-color: white; /* Fondo blanco para la caja */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            padding: 20px; /* Espaciado interno */
+            max-width: 500px; /* Máximo ancho de la caja */
+            margin: 0 auto; /* Centra la caja horizontalmente */
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .title {
+            text-align: center;
+            color: #363636;
+        }
+        .button.is-info {
+            background-color: #3273dc; /* Color moderno para el botón */
+            border-radius: 5px; /* Bordes redondeados suaves */
+        }
+        .button.is-link.is-light {
+            border-radius: 5px;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        .input, .select select {
+            width: 80%; /* Reduce el ancho de los inputs y selects */
+            margin: 0 auto; /* Centra los inputs y selects */
+        }
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* La sección ocupa al menos el alto completo de la pantalla */
+        }
+    </style>
 </head>
 <body>
     <section class="section">
-        <div class="container">
+        <div class="box has-text-centered p-7">
             <h2 class="title">Registro de Dama</h2>
             <form class="box" action="../RutaRegistro.php" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <input type="hidden" name="tipoRegistro" value="clienta">
@@ -33,7 +74,7 @@
                     <div class="control">
                         <div class="select">
                             <select name="tipo" id="tipo" autocomplete="off">
-                                <option selected value="1">Estoy buscando Suggar</option>
+                                <option selected value="1">Busco Suggar</option>
                                 <option value="2">Soy Suggar Mommy</option>
                             </select>
                         </div>
@@ -81,7 +122,7 @@
                     </div>
                 </div>
             </form>
-            <div>
+            <div class="has-text-centered">
                 <a href="index.php" class="button is-link is-light">Volver</a>
             </div>
         </div>

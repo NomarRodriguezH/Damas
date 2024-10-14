@@ -1,6 +1,5 @@
-<?php  
-    session_start();
-    include '../V/head.php';
+<?php 
+	session_start();
     include '../C/clientaController.php';
     $id = $_SESSION['id']; 
     $clienta = new clientaController();
@@ -193,3 +192,11 @@
     </section>
 </body>
 </html>
+
+<?php
+	require_once "../C/clientaController.php";
+	if(isset($_POST['login_usuario']) && isset($_POST['login_clave'])){
+		$obj = new clientaController();
+		$obj->iniciarSesionClientaControlador();
+	}
+?>

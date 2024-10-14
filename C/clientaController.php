@@ -1,12 +1,10 @@
 <?php 
-require_once '../../M/mainModel.php';
+require_once '../M/mainModel.php';
 
 class clientaController extends mainModel {
 
 
     public function completarPerfil() {
-
-        # Almacenando datos #
         $id = $this->limpiarCadena($_POST['id']);
         $estatura = $this->limpiarCadena($_POST['estatura']);
         $peso = $this->limpiarCadena($_POST['peso']);
@@ -277,6 +275,35 @@ class clientaController extends mainModel {
     }
 
 
+     public function verPerfil($id) {
+        $verPerfil = $this->seleccionarDatos("Unico", "clienta", "id", $id);
+        
+        if ($verPerfil->rowCount() > 0) {
+            return $verPerfil->fetch(PDO::FETCH_ASSOC);
+        }
+        
+        return null; // Si no hay perfil, retornas null o un valor adecuado
+    } // FIN VER PERFIL
 
-} // Ultima linea 
+
+    public function contacto($id){
+        $whatsapp= $_POST['whatsapp'];
+        $ = $_POST[''];
+        $ = $_POST[''];
+        $ = $_POST[''];
+        $ = $_POST[''];
+
+
+        if (empty($whatsapp)|| empty($whatsapp) || empty($whatsapp) || empty($whatsapp) || empty($whatsapp) ||) {
+            
+        }
+
+
+
+        $sql = 
+    }//Ultima linea forma de contacto.
+
+
+
+ } // Ultima linea 
 ?>

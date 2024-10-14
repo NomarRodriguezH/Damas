@@ -1,5 +1,6 @@
 <?php
 
+	require_once "M/mainModel.php";
 
 	class userController extends mainModel{
 
@@ -1108,7 +1109,7 @@
 		    }
 
 		     # Directorio de imagenes #
-    		$img_dir="../fotos/";
+    		$img_dir="../fotos/clientas/";
 
     		# Comprobar si se selecciono una imagen #
     		if($_FILES['usuario_foto']['name']!="" && $_FILES['usuario_foto']['size']>0){
